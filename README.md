@@ -6,12 +6,17 @@ A Spring Boot REST API for querying real-time **METAR** weather data for airport
 
 | | |
 |---|---|
-| **Runtime** | Java 25 |
+| **Runtime** | Java 21 |
 | **Framework** | Spring Boot 4.0.6 (Spring MVC) |
 | **Build** | Maven (use `./mvnw`, not system `mvn`) |
-| **Cache** | Caffeine (in-memory, async mode) |
-| **Resilience** | Spring Retry (`@Retryable`) |
+| **Boilerplate** | Lombok (`@Data`, `@Builder`, etc.) |
+| **HTTP Client** | Apache HttpClient 5 |
+| **Logging** | SLF4J + Logback (Spring Boot default) |
+| **Cache** | Caffeine (in-memory) |
+| **Rate Limiting** | Bucket4j 8.10.1 (token bucket per API key) |
+| **Resilience** | Spring Retry (`@Retryable`, 3 attempts) |
 | **Async** | `@Async` + `CompletableFuture` |
+| **API Docs** | SpringDoc OpenAPI + Swagger UI 2.8.3 |
 
 ---
 
@@ -25,6 +30,9 @@ A Spring Boot REST API for querying real-time **METAR** weather data for airport
 ## Quick Start
 
 ```bash
+# Install all modules
+./mvnw clean install
+
 # Run
 ./mvnw spring-boot:run -pl api -am
 
